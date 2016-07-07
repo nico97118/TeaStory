@@ -7,7 +7,7 @@ class Mytea extends CI_Controller {
 	{
             parent::__construct();
             $this->load->view('bootstrap');
-            $this->load->view('navbar');
+            $this->load->view('navbar',array('categorie'=>'mytea'));
             
             $this->load->model('mytea_model');
 	}
@@ -23,7 +23,7 @@ class Mytea extends CI_Controller {
             $this->form_validation->set_rules('name', 'Nom', 'required');
             $this->form_validation->set_rules('type', 'Type', 'required');
             $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer');
-            $this->form_validation->set_rules('sleeping', 'Durée', 'required,decimal');
+            $this->form_validation->set_rules('sleeping', 'Durée', 'required|decimal');
             $this->form_validation->set_rules('seller', 'Vendeur', '');
             
             if ($this->form_validation->run() == FALSE) {

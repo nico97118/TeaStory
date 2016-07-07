@@ -48,6 +48,7 @@
 ?>
 
 <div class="container">
+    <div class="col-md-4">
     <?php echo validation_errors(); ?>
     <div class="row">
             <h1>Editer <?php echo $tea->name ?></h1>
