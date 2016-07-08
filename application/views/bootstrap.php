@@ -8,7 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Tea Story</title>
-
+    
+    <!-- jQuery + plugins -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        
+    <!-- DataTables -->
+	<link href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+	<script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+        
+        <link href="<?php echo css_url('dataTable.bootstrap.css') ?>" rel="stylesheet">
+        <script src="<?php echo js_url('dataTable.bootstrap.js');?>"></script>
+        
     <!-- Bootstrap -->
     <link href="<?php echo css_url('bootstrap.min.css') ?>" rel="stylesheet">
 
@@ -24,12 +35,18 @@
     
     <!-- Custom CSS -->
     <link href="<?php echo css_url('teastory.css') ?>" rel="stylesheet">
+    <link href="<?php echo css_url('bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
+    
   </head>
   <body>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo js_url('bootstrap.min.js');?>"></script>
+    
+    <script type="text/javascript" src="<?php echo js_url('moment-with-locales.js');?>"></script>
+    <script type="text/javascript" src="<?php echo js_url('bootstrap-datetimepicker.min.js');?>"></script>
+    
   </body>
 </html>
 

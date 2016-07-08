@@ -11,7 +11,7 @@ if(!isset($categorie))
     <ul class="nav navbar-nav">
       <li <?php if($categorie == 'home') echo 'class="active"'; ?>><a href="<?php echo site_url()?>">Accueil</a></li>
       <li <?php if($categorie == 'mytea') echo 'class="active"'; ?>><a href="<?php echo site_url('mytea')?>">Mes thés</a></li>
-      <li <?php if($categorie == 'story') echo 'class="active"'; ?>><a href="#">Story</a></li>
+      <li <?php if($categorie == 'history') echo 'class="active"'; ?>><a href="<?php echo site_url('history')?>">Suivi</a></li>
       <li <?php if($categorie == 'stat') echo 'class="active"'; ?>><a href="#">Stats</a></li>
     </ul>
   </div>

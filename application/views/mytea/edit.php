@@ -8,18 +8,19 @@
                 'class'       => 'form-control',
                 'value'       => set_value('name',$tea->name)
             );
-    $type = array(
-                'name'        => 'type',
-                'id'          => 'type',
-                'placeholder' => 'Type',
-                'class'       => 'form-control',
-                'value'       => set_value('type',$tea->type)
-            );
+   $types = array(
+    'vert' => 'thé vert',
+    'noir' => 'thé noir',
+    'blanc' => 'thé blanc',
+    'rooibos' => 'Rooibos',
+    'oolong' => 'Oolong'
+);
     $temperature = array(
                 'name'        => 'temperature',
                 'id'          => 'temperature',
                 'placeholder' => 'Temperature',
                 'class'       => 'form-control',
+                'type' => 'number',
                 'value'       => set_value('temperature',$tea->temperature)
             );
     
@@ -53,24 +54,37 @@
     <div class="row">
             <h1>Editer <?php echo $tea->name ?></h1>
             <?php echo form_open("mytea/edit/$id");?>
-            <div class="form-group">
-            <?php echo form_fieldset('Informations');?>
-                <?php echo form_label('Nom', 'name'); ?>
-                <?php echo form_input($name);?>
-                
-                <?php echo form_label('Type', 'type'); ?>
-                <?php echo form_input($type);?>
-                
-                <?php echo form_label('Temperature', 'temperature'); ?>
-                <?php echo form_input($temperature);?>
-                
-                <?php echo form_label('Durée', 'sleeping'); ?>
-                <?php echo form_input($sleeping);?>
-                
-                <?php echo form_label('Vendeur', 'seller'); ?>
-                <?php echo form_input($seller);?>
-                 </div>
-            </div>
+            <div class='form-group'>
+                    <?php echo form_label('Nom', 'name'); ?>
+                    <?php echo form_input($name); ?>
+                </div>
+
+                <div class='form-group'>
+                    <?php echo form_label('Type', 'type'); ?>
+                    <?php echo form_dropdown('type', $types,$tea->type); ?>
+                </div>
+
+                <div class='form-group'>
+                    <?php echo form_label('Temperature', 'temperature'); ?>
+                    <?php echo form_input($temperature); ?>
+                </div>
+
+                <div class='form-group'>
+                    <?php echo form_label('Durée', 'sleeping'); ?>
+                    <?php echo form_input($sleeping); ?>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#sleeping').datetimepicker({
+                            format: 'HH:mm:ss'
+                        });
+                    });
+                </script>
+
+                <div class='form-group'>
+                    <?php echo form_label('Vendeur', 'seller'); ?>
+                    <?php echo form_input($seller); ?>
+                </div>
            <?php echo form_fieldset_close(); ?>
            <?php echo form_button($send); ?>
            <?php echo anchor(site_url('mytea'),'Annuler',array('class'=>'btn btn-danger')); ?>
