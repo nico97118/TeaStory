@@ -26,4 +26,11 @@ class Mytea_model extends CI_Model {
     function get_not_empty(){
         return $this->db->where('empty',0)->get('tea_store')->result();
     }
+    
+    function count_empty(){
+        $count = $this->db->get_where('tea_store',array('empty' => '1'));
+        return $count->num_rows();
+    }
+    
+
 }
