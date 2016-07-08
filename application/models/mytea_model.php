@@ -22,4 +22,8 @@ class Mytea_model extends CI_Model {
         }
         return $this->db->get('tea_store')->result();
     }
+    
+    function get_not_empty(){
+        return $this->db->where('empty',0)->get('tea_store')->result();
+    }
 }

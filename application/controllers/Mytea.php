@@ -62,8 +62,8 @@ class Mytea extends CI_Controller {
                    'temperature'    =>  $this->input->post('temperature'),
                    'sleeping'       =>  $this->input->post('sleeping'),
                    'seller'         =>  $this->input->post('seller'),
-                    );
-                 
+                   'empty'          =>  $this->input->post('empty')
+                );
                 $this->mytea_model->edit($id,$teaData);
                 $this->session->set_flashdata('success', $teaData['name']." édité avec succès.");
                 redirect(site_url('mytea'),'refresh');

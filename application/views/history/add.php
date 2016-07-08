@@ -8,7 +8,7 @@ $date = array(
 );
 
 $tea_options = array();
-$teas = $this->mytea_model->get();
+$teas = $this->mytea_model->get_not_empty();
 foreach ($teas as $tea) {
     $tea_options[$tea->id] = $tea->name;
 }
@@ -92,12 +92,14 @@ $send = array(
     <?php echo form_open('history/index', array()); ?>
     <div class="form-group">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <?php echo form_input($date); ?>
             </div>
-            <div class='col-xs-3'>
+            <div class='col-xs-1'>
                 <?php echo form_label('Thé'); ?>
-                <?php echo form_dropdown('tea', $tea_options); ?>
+            </div>
+                <div class='col-xs-3'>
+                <?php echo form_dropdown('tea', $tea_options,'noir',"class='form-control input-sm'"); ?>
             </div>
             <div class='col-xs-6'>
                 <?php echo form_input($comment); ?>
@@ -116,7 +118,7 @@ $send = array(
                 <?php echo form_input($dosage); ?>
             </div>   
             <div class='col-xs-2'>
-                <?php echo form_dropdown('unit', $unit_options); ?>
+                <?php echo form_dropdown('unit', $unit_options,'cs',"class='form-control input-sm'"); ?>
             </div>
         </div>
     </div>

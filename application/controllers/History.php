@@ -17,6 +17,12 @@ class History extends CI_Controller {
              $this->load->library('form_validation');
             
             $this->form_validation->set_rules('tea', 'Thé', 'required');
+            $this->form_validation->set_rules('temperature', 'Temperature', 'required');
+            $this->form_validation->set_rules('dosage', 'Dosage', 'required');
+            $this->form_validation->set_rules('unit', 'Unité', 'required');
+            $this->form_validation->set_rules('sleeping', 'Durée', 'required');
+            $this->form_validation->set_rules('date', 'required', 'required');
+            $this->form_validation->set_rules('comment', 'Commentaire', 'xssclean');
             
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('history/add');
@@ -35,34 +41,6 @@ class History extends CI_Controller {
                 $this->history_model->add($teaData);
                 $this->session->set_flashdata('success', 'Nouvelle entré ajoutée avec succès.');
                 redirect(site_url('history'),'refresh');
-            }
-        }
-        
-        public function add(){
-            
-             $this->load->library('form_validation');
-            
-            $this->form_validation->set_rules('name', 'Nom', 'required');
-            $this->form_validation->set_rules('type', 'Type', 'required');
-            $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer');
-            $this->form_validation->set_rules('sleeping', 'Durée', 'required|decimal');
-            $this->form_validation->set_rules('seller', 'Vendeur', '');
-            
-            if ($this->form_validation->run() == FALSE) {
-                $this->load->view('history/add');
-                $this->load->view('history/index');
-            } else {
-                 $teaData = array(
-                   'name'           =>  $this->input->post('name'),
-                   'type'           =>  $this->input->post('type'),
-                   'temperature'    =>  $this->input->post('temperature'),
-                   'sleeping'       =>  $this->input->post('sleeping'),
-                   'seller'         =>  $this->input->post('seller'),
-                    );
-                 
-                $this->mytea_model->add($teaData);
-                $this->session->set_flashdata('success', 'Nouveau thé ajouté avec succès.');
-                redirect(site_url('mytea'),'refresh');
             }
         }
         /*

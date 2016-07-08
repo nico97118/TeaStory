@@ -39,6 +39,13 @@
                 'class'       => 'form-control',
                 'value'       => set_value('seller',$tea->seller)
             );
+    $empty = array(
+        'name'          => 'empty',
+        'id'            => 'empty',
+        'value'         => '1',
+        'checked'       => set_value('empty',$tea->empty),
+        'style'         => 'margin:10px'
+);
     
     $send   = array(
                 'name' => 'button',
@@ -84,6 +91,11 @@
                 <div class='form-group'>
                     <?php echo form_label('Vendeur', 'seller'); ?>
                     <?php echo form_input($seller); ?>
+                </div>
+                
+                <div class='form-group'>
+                    <?php echo form_label('Vide ?', 'empty'); ?>
+                    <?php echo form_checkbox($empty); ?>
                 </div>
            <?php echo form_fieldset_close(); ?>
            <?php echo form_button($send); ?>

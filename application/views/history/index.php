@@ -11,6 +11,7 @@ $elements = $this->db->get('tea_history_view')->result();
             <table id="teas" class="table table-striped">
                 <thead class='thead-inverse'>
                     <tr>
+                        <th>Heure</th>
                         <th>Nom</th>
                         <th>Dosage</th>
                         <th>Temperature</th>
@@ -22,6 +23,9 @@ $elements = $this->db->get('tea_history_view')->result();
                 <tbody>
                     <?php foreach ($elements as $element) { ?>
                         <tr>
+                            <td>
+                                <?php echo date('G:i',strtotime($element->date)); ?>
+                            </td>
                             <td>
                                 <?php echo htmlspecialchars($element->name,ENT_QUOTES,'UTF-8'); ?>
                             </td>
