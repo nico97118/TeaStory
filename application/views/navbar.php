@@ -22,6 +22,9 @@ if (!isset($categorie))
                 <li <?php if ($categorie == 'history') echo 'class="active"'; ?>><a href="<?php echo site_url('history') ?>">Suivi</a></li>
                 <li <?php if ($categorie == 'stat') echo 'class="active"'; ?>><a href="#">Stats</a></li>
           </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>v1.1<li>
+            </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
