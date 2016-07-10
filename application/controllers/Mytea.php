@@ -13,8 +13,8 @@ class Mytea extends CI_Controller {
             $this->load->model('mytea_model');
 	}
         
-        public function index(){
-            $this->load->view('mytea/index');
+        public function index($filter=null){
+            $this->load->view('mytea/index',array('filter'=>$filter));
         }
         
         public function add(){

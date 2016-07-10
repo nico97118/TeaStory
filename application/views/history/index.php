@@ -2,12 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); 
 $elements = $this->db->get('tea_history_view')->result();
 ?>
+<style>
+    tr.divider { 
+        border-top: 2px dotted black; }
+</style>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h2>Suivi du thé</h1>
-            
+                     
             <table id="teas" class="table table-striped">
                 <thead class='thead-inverse'>
                     <tr>
@@ -22,10 +26,19 @@ $elements = $this->db->get('tea_history_view')->result();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($elements as $element) { ?>
-                        <tr>
+                    <?php
+                    $date = null;
+                    foreach ($elements as $element) :
+                        if($date != date('d/m',strtotime($element->date))):
+                            $date = date('d/m',strtotime($element->date));
+                            echo '<tr class="divider">';
+                        else:
+                            echo '<tr>';
+                        endif;
+?>
+                        
                             <td>
-                                <?php echo date('G:i',strtotime($element->date)); ?>
+                                <?php echo date('d/m G:i',strtotime($element->date)); ?>
                             </td>
                             <td>
                                 <?php echo htmlspecialchars($element->name,ENT_QUOTES,'UTF-8'); ?>
@@ -49,6 +62,6 @@ $elements = $this->db->get('tea_history_view')->result();
                                 <a class="btn btn-default" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
-                    <?php } ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
