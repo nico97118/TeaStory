@@ -60,6 +60,18 @@ $comment = array(
     'value' => set_value('comment')
 );
 
+$rating = array(
+    'id'        =>'rating',
+    'name'      => 'rating',
+    'type'      => 'number',
+    'class'     =>'rating krajee-fa',
+    'min'       => '1',
+    'max'       =>'5',
+    'step'      =>'1',
+    'data-size' =>'xs',
+    'data-rtl'  => 'false'
+);
+
 $send = array(
     'name' => 'button',
     'type' => 'submit',
@@ -82,8 +94,11 @@ $send = array(
             locale: 'fr'
 
         });
+        
+        $("#rating").rating();
     });
 </script>
+
 
 <div class="container">
     <?php echo validation_errors(); ?>
@@ -119,6 +134,18 @@ $send = array(
             </div>   
             <div class='col-xs-2'>
                 <?php echo form_dropdown('unit', $unit_options,'cs',"class='form-control input-sm'"); ?>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <?php echo form_label('Note : '); ?>
+                <input name="rate" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty"/>
+            </div>
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <?php echo form_label('Vide ? '); ?>
+                <?php echo form_checkbox('empty','1'); ?>
             </div>
         </div>
     </div>

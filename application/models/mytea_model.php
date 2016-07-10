@@ -32,5 +32,20 @@ class Mytea_model extends CI_Model {
         return $count->num_rows();
     }
     
+    function avg_rate($id)
+    {
+        $elements = $this->db->get_where('tea_history',array('fk_tea_id'=>$id))->result();
+        if(empty($elements))
+            return NULL;
+        
+        $count = 0;
+        $sum = 0;
+        foreach($elements AS $element){
+            $sum += $element->rate;
+            $count ++;
+        }
+        
+        return bcdiv($sum, $count, 1);
+    }
 
 }

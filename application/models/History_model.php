@@ -17,4 +17,9 @@ class History_model extends CI_Model {
         }
         return $this->db->get('tea_store')->result();
     }
+    
+    function set_empty($tea_id,$empty=true)
+    {
+        $this->db->where('id',$tea_id)->update('tea_store',array('empty'=>($empty?1:0)));
+    }
 }

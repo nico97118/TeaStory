@@ -13,6 +13,7 @@ $teas = $this->db->get('tea_store')->result();
                     <tr>
                         <th>Nom</th>
                         <th>Type</th>
+                        <th>Note</th>
                         <th>Temperature</th>
                         <th>Durée</th>
                         <th>Vendeur</th>
@@ -26,6 +27,10 @@ $teas = $this->db->get('tea_store')->result();
                             </td>
                             <td>
                                 <?php echo htmlspecialchars($tea->type,ENT_QUOTES,'UTF-8'); ?>
+                            </td>
+                            <td>
+                                <input value="<?php echo $this->mytea_model->avg_rate($tea->id) ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
+                                <span class="label label-default"><?php echo $this->mytea_model->avg_rate($tea->id) ?></span>
                             </td>
                             <td>
                                 <?php echo htmlspecialchars($tea->temperature,ENT_QUOTES,'UTF-8'); ?>

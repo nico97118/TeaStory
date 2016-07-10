@@ -8,6 +8,7 @@ class Mytea extends CI_Controller {
             parent::__construct();
             $this->load->view('bootstrap');
             $this->load->view('navbar',array('categorie'=>'mytea'));
+            $this->load->view('rating');
             
             $this->load->model('mytea_model');
 	}

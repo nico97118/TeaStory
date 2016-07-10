@@ -17,6 +17,7 @@ $elements = $this->db->get('tea_history_view')->result();
                         <th>Temperature</th>
                         <th>Durée</th>
                         <th>Commentaire</th>
+                        <th>Note</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -40,6 +41,9 @@ $elements = $this->db->get('tea_history_view')->result();
                             </td>
                             <td>
                                 <?php echo htmlspecialchars($element->comment,ENT_QUOTES,'UTF-8'); ?>
+                            </td>
+                            <td>
+                                <input value="<?php echo $element->rate ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
                             </td>
                             <td>
                                 <a href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
