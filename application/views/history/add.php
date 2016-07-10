@@ -4,10 +4,10 @@ $date = array(
     'id' => 'date',
     'placeholder' => 'Date',
     'class' => 'form-control input-sm',
-    'value' => set_value('date')
+    'value' => set_value('date',date('Y-m-d G:i',strtotime('now')))
 );
 
-$tea_options = array();
+$tea_options = array(null=>'');
 $teas = $this->mytea_model->get_not_empty();
 foreach ($teas as $tea) {
     $tea_options[$tea->id] = $tea->name;
@@ -96,7 +96,22 @@ $send = array(
         });
 
         $("#rating").rating();
+        
+        $("#tea").on('change',function(){
+            
+            var teas    = <?php echo json_encode($teas, JSON_PRETTY_PRINT); ?>;
+            var tea_id      = this.value;
+
+            for (var i=0, iLen=teas.length; i<iLen; i++) 
+                if (teas[i].id == tea_id) 
+                    var tea = teas[i];
+
+            document.getElementById('sleeping').value    = tea.sleeping;
+            document.getElementById('temperature').value = tea.temperature;
+            
+        });
     });
+    
 </script>
 
 
@@ -121,7 +136,7 @@ $send = array(
                                 <?php echo form_label('Thé'); ?>
                             </div>
                             <div class='col-xs-3'>
-                                <?php echo form_dropdown('tea', $tea_options, 'noir', "class='form-control input-sm'"); ?>
+                                <?php echo form_dropdown('tea', $tea_options, 'null', ' id="tea" class="form-control input-sm" '); ?>
                             </div>
                             <div class='col-xs-6'>
                                 <?php echo form_input($comment); ?>
