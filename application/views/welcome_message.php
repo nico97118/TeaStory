@@ -15,24 +15,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="item active">
       <img src="<?php echo img_url('home1.jpg') ?>" alt="Chania">
       <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <h3>Malaysia :Cameroun Highland</h3>
       </div>
     </div>
 
     <div class="item">
       <img src="<?php echo img_url('home2.jpg') ?>" alt="Chania">
       <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <h3>Japan Traditional Tea</h3>
       </div>
     </div>
 
     <div class="item">
       <img src="<?php echo img_url('home3.jpg') ?>" alt="Flower">
       <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
+        <h3>Flower in the pot</h3>
       </div>
     </div>
 
