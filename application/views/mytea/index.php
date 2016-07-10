@@ -17,6 +17,7 @@ $teas = $this->db->get('tea_store')->result();
                         <th>Temperature</th>
                         <th>Durée</th>
                         <th>Vendeur</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +34,7 @@ $teas = $this->db->get('tea_store')->result();
                                 <span class="label label-default"><?php echo $this->mytea_model->avg_rate($tea->id) ?></span>
                             </td>
                             <td>
-                                <?php echo htmlspecialchars($tea->temperature,ENT_QUOTES,'UTF-8'); ?>
+                                <?php echo htmlspecialchars($tea->temperature,ENT_QUOTES,'UTF-8').' °C'; ?>
                             </td>
                             <td>
                                 <?php echo htmlspecialchars($tea->sleeping,ENT_QUOTES,'UTF-8'); ?>
@@ -42,11 +43,14 @@ $teas = $this->db->get('tea_store')->result();
                                 <?php echo htmlspecialchars($tea->seller,ENT_QUOTES,'UTF-8'); ?>
                             </td>
                             <td>
-                                <a href="<?php echo site_url("mytea/edit/$tea->id") ?>"><i class="fa fa-wrench"></i></a><br/>
-                                <a href="<?php echo site_url("mytea/delete/$tea->id") ?>"><i class="fa fa-trash"></i></a>
+                                <a class="btn btn-default" href="<?php echo site_url("mytea/edit/$tea->id") ?>"><i class="fa fa-pencil"></i></a>  
+                                <a class="btn btn-default" href="<?php echo site_url("mytea/delete/$tea->id") ?>"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <p><?php echo anchor('mytea/add',"Ajouter un thé")?></p>
+            <p>
+                <?php echo anchor(site_url('mytea/add'), 'Ajouter un thé', array('class' => 'btn btn-success')); ?>
+            </p>
+            

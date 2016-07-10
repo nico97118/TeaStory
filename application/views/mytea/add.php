@@ -60,7 +60,8 @@ $send = array(
 
                 <div class='form-group'>
                     <?php echo form_label('Type', 'type'); ?>
-                    <?php echo form_dropdown('type', $types); ?>
+                    <?php echo form_dropdown('type', $types,null,"class='form-control input-md'"); ?>
+               
                 </div>
 
                 <div class='form-group'>

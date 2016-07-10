@@ -7,7 +7,7 @@ $elements = $this->db->get('tea_history_view')->result();
     <div class="row">
         <div class="col-md-12">
             <h2>Suivi du thé</h1>
-
+            
             <table id="teas" class="table table-striped">
                 <thead class='thead-inverse'>
                     <tr>
@@ -46,7 +46,7 @@ $elements = $this->db->get('tea_history_view')->result();
                                 <input value="<?php echo $element->rate ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
                             </td>
                             <td>
-                                <a href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
+                                <a class="btn btn-default" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

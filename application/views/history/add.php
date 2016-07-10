@@ -61,15 +61,15 @@ $comment = array(
 );
 
 $rating = array(
-    'id'        =>'rating',
-    'name'      => 'rating',
-    'type'      => 'number',
-    'class'     =>'rating krajee-fa',
-    'min'       => '1',
-    'max'       =>'5',
-    'step'      =>'1',
-    'data-size' =>'xs',
-    'data-rtl'  => 'false'
+    'id' => 'rating',
+    'name' => 'rating',
+    'type' => 'number',
+    'class' => 'rating krajee-fa',
+    'min' => '1',
+    'max' => '5',
+    'step' => '1',
+    'data-size' => 'xs',
+    'data-rtl' => 'false'
 );
 
 $send = array(
@@ -81,7 +81,7 @@ $send = array(
 ?>
 
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $('#date').datetimepicker({
             sideBySide: true,
             format: 'YYYY-MM-DD HH:mm',
@@ -94,7 +94,7 @@ $send = array(
             locale: 'fr'
 
         });
-        
+
         $("#rating").rating();
     });
 </script>
@@ -102,54 +102,68 @@ $send = array(
 
 <div class="container">
     <?php echo validation_errors(); ?>
-
-    <h4>Ajouter une entrée</h4>
-    <?php echo form_open('history/index', array()); ?>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-xs-2">
-                <?php echo form_input($date); ?>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#add">Ajouter une entrée</a>
+                </h4>
             </div>
-            <div class='col-xs-1'>
-                <?php echo form_label('Thé'); ?>
-            </div>
-                <div class='col-xs-3'>
-                <?php echo form_dropdown('tea', $tea_options,'noir',"class='form-control input-sm'"); ?>
-            </div>
-            <div class='col-xs-6'>
-                <?php echo form_input($comment); ?>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class='col-xs-2'>
-                <?php echo form_input($temperature); ?>
-            </div>
-            <div class='col-xs-2'>
-                <?php echo form_input($sleeping); ?>
-            </div>
-            <div class='col-xs-4'></div>    
-            <div class='col-xs-2'>
-                <?php echo form_input($dosage); ?>
-            </div>   
-            <div class='col-xs-2'>
-                <?php echo form_dropdown('unit', $unit_options,'cs',"class='form-control input-sm'"); ?>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-xs-4">
-                <?php echo form_label('Note : '); ?>
-                <input name="rate" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty"/>
-            </div>
-            <div class="col-xs-4"></div>
-            <div class="col-xs-4">
-                <?php echo form_label('Vide ? '); ?>
-                <?php echo form_checkbox('empty','1'); ?>
+            <div id="add" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <?php echo form_open('history/index', array()); ?>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <?php echo form_input($date); ?>
+                            </div>
+                            <div class='col-xs-1'>
+                                <?php echo form_label('Thé'); ?>
+                            </div>
+                            <div class='col-xs-3'>
+                                <?php echo form_dropdown('tea', $tea_options, 'noir', "class='form-control input-sm'"); ?>
+                            </div>
+                            <div class='col-xs-6'>
+                                <?php echo form_input($comment); ?>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class='col-xs-2'>
+                                <?php echo form_input($temperature); ?>
+                            </div>
+                            <div class='col-xs-2'>
+                                <?php echo form_input($sleeping); ?>
+                            </div>
+                            <div class='col-xs-4'></div>    
+                            <div class='col-xs-2'>
+                                <?php echo form_input($dosage); ?>
+                            </div>   
+                            <div class='col-xs-2'>
+                                <?php echo form_dropdown('unit', $unit_options, 'cs', "class='form-control input-sm'"); ?>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <?php echo form_label('Note : '); ?>
+                                <input name="rate" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty"/>
+                            </div>
+                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4">
+                                <?php echo form_label('Vide ? '); ?>
+                                <?php echo form_checkbox('empty', '1'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo form_fieldset_close(); ?>
+                </div>
+                <div class="panel-footer">
+                    <?php echo form_button($send); ?>
+                    <?php //echo anchor(site_url('mytea'),'Annuler',array('class'=>'btn btn-danger')); ?>
+                    <?php echo form_close(); ?>
+                </div>
             </div>
         </div>
     </div>
-    <?php echo form_fieldset_close(); ?>
-    <?php echo form_button($send); ?>
-    <?php //echo anchor(site_url('mytea'),'Annuler',array('class'=>'btn btn-danger')); ?>
-    <?php echo form_close("</div></div>"); ?>
+</div>
