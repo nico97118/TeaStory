@@ -130,7 +130,11 @@ $send = array(
                         <br>
                         <div class="row">
                             <div class='col-xs-2'>
-                                <?php echo form_input($temperature); ?>
+                                <div class="input-group">
+                                    <?php echo form_input($temperature); ?>
+                                    <span class="input-group-addon" >°C</span>
+                                </div>
+                                
                             </div>
                             <div class='col-xs-2'>
                                 <?php echo form_input($sleeping); ?>
