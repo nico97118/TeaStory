@@ -4,7 +4,7 @@ $elements = $this->db->order_by('date','desc')->get('tea_history_view')->result(
 ?>
 <style>
     tr.divider { 
-        border-top: 2px dotted black; }
+        border-top: 2px solid black; }
 </style>
 
 <div class="container">
