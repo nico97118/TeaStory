@@ -21,7 +21,7 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
                 <table id="history" class="table table-striped">
                     <thead class='thead-inverse'>
                         <tr>
-                            <th>Heure</th>
+                            <th>Date</th>
                             <th>Nom</th>
                             <th>Dosage</th>
                             <th>Temperature</th>
