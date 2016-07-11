@@ -18,12 +18,19 @@ endswitch;
 $teas = $this->db->get('tea_store')->result();
 ?>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#teas').DataTable(
+        );
+    });
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h2>Mes thés</h1>
 
-
+            
                 <ul class="nav nav-tabs">
                     <li <?php if($filter=='none') : ?> class='active' <?php endif; ?>>
                         <a href="<?php echo site_url('mytea'); ?>">Tout <span class="badge"><?php echo $this->mytea_model->count(); ?></span></a>
@@ -35,7 +42,7 @@ $teas = $this->db->get('tea_store')->result();
                         <a href="<?php echo site_url('mytea/index/empty'); ?>">Vide <span class="badge"><?php echo $this->mytea_model->count(true); ?></span></a>
                     </li>
                 </ul>
-
+            <br>
                 <table id="teas" class="table table-striped">
                     <thead>
                         <tr>
