@@ -13,11 +13,7 @@ foreach ($teas as $tea) {
     $tea_options[$tea->id] = $tea->name;
 }
 
-$unit_options = array('cc' => 'cuillere a café',
-    'cs' => 'cuillere a soupe',
-    'g' => 'gramme',
-    'sch' => 'sachet'
-);
+$unit_options = $this->config->item('unit_options');
 
 
 $temperature = array(

@@ -8,13 +8,8 @@ $name = array(
     'class' => 'form-control',
     'value' => set_value('name', $tea->name)
 );
-$types = array(
-    'vert' => 'thé vert',
-    'noir' => 'thé noir',
-    'blanc' => 'thé blanc',
-    'rooibos' => 'Rooibos',
-    'oolong' => 'Oolong'
-);
+$types = $this->config->item('types');
+
 $temperature = array(
     'name' => 'temperature',
     'id' => 'temperature',
