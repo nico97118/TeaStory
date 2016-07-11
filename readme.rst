@@ -1,22 +1,16 @@
 ###################
-What is CodeIgniter
+What is Tea Story
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Tea Story is a personal project devlopped to manage my own tea stock and comsumption of teas.
+
 
 *******************
 Release Information
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+This repo contains in-development code for future releases.
+To get the latest stable version. Browse for higher vX.Y tag.
 
 **************************
 Changelog and New Features
@@ -38,33 +32,28 @@ issues, as well as missing features.
 ************
 Installation
 ************
+-  `1. Set up this repo on a webserver.`_
+-  `2. You'll need to change the /application/config/config.php to update 'base_url' item.`_
+-  `3. You'll need to change the /application/config/database.php to update your database setting.`_
+-  `4. To help you set up the database. Use /install.sql script on your MySQL server to construct the database.`_
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+Everything should working fine now
 
 *******
 License
 *******
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+This program is under the GPLv3 License.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 *********
 Resources
 *********
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community IRC <https://webchat.freenode.net/?channels=%23codeigniter>`_
+-  `Code Igniter <https://www.codeigniter.com>`_
+-  `dataTables <https://datatables.net>`_
+-  `Highcharts <http://www.highcharts.com>`_
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+Author  : Nicolas Loridon
+Contact : `nico97118@gmail.com<mailto:security@codeigniter.com>`_
