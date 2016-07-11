@@ -18,7 +18,6 @@ $height = 110 + count($categories) * 30;
 
 <script>
     $(function () {
-        //alert(<?php echo json_encode($data); ?>);
         $('#count_graph').highcharts({
             chart: {
                 type: 'bar'

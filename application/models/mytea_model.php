@@ -54,5 +54,11 @@ class Mytea_model extends CI_Model {
         
         return bcdiv($sum, $count, 1);
     }
+    
+    function get_type($type=null){
+        if(isset($type))
+            $this->db->where('type',$type);
+        return $this->db->get('tea_store')->result();
+    }
 
 }
