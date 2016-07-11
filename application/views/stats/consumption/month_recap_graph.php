@@ -79,4 +79,4 @@ $i++; endforeach; ?>
     });
 </script>
 
-<div id="month_recap_graph" style="width: 80%;height: <?php echo 200; ?>px;"></div>
+<div id="month_recap_graph" style="width: 80%;height: <?php echo 300; ?>px;"></div>
