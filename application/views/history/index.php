@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); 
-$elements = $this->db->get('tea_history_view')->result();
+$elements = $this->db->order_by('date','desc')->get('tea_history_view')->result();
 ?>
 <style>
     tr.divider { 
