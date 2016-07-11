@@ -23,7 +23,7 @@ if (!isset($categorie))
                 <li <?php if ($categorie == 'stats') echo 'class="active"'; ?>><a href="<?php echo site_url('stats') ?>">Stats</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>v1.1<li>
+                <li><?php echo $this->config->item('version')?><li>
             </ul>
         </div><!--/.nav-collapse -->
       </div>
