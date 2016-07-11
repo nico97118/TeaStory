@@ -20,7 +20,7 @@ if (!isset($categorie))
              <li <?php if ($categorie == 'home') echo 'class="active"'; ?>><a href="<?php echo site_url() ?>">Accueil</a></li>
                 <li <?php if ($categorie == 'mytea') echo 'class="active"'; ?>><a href="<?php echo site_url('mytea') ?>">Mes thés</a></li>
                 <li <?php if ($categorie == 'history') echo 'class="active"'; ?>><a href="<?php echo site_url('history') ?>">Suivi</a></li>
-                <li <?php if ($categorie == 'stat') echo 'class="active"'; ?>><a href="#">Stats</a></li>
+                <li <?php if ($categorie == 'stats') echo 'class="active"'; ?>><a href="<?php echo site_url('stats') ?>">Stats</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>v1.1<li>
