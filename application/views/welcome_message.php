@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="item active">
       <img src="<?php echo img_url('home1.jpg') ?>" alt="Chania">
       <div class="carousel-caption">
-        <h3>Malaysia :Cameroun Highland</h3>
+        <h3>Malaysia :Cameron Highland</h3>
       </div>
     </div>
 
