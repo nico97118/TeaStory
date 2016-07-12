@@ -18,13 +18,22 @@ if (!isset($categorie))
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
              <li <?php if ($categorie == 'home') echo 'class="active"'; ?>><a href="<?php echo site_url() ?>">Accueil</a></li>
-                <li <?php if ($categorie == 'mytea') echo 'class="active"'; ?>><a href="<?php echo site_url('mytea') ?>">Mes thés</a></li>
-                <li <?php if ($categorie == 'history') echo 'class="active"'; ?>><a href="<?php echo site_url('history') ?>">Suivi</a></li>
-                <li <?php if ($categorie == 'stats') echo 'class="active"'; ?>><a href="<?php echo site_url('stats') ?>">Stats</a></li>
+              <li <?php if ($categorie == 'mytea') echo 'class="active"'; ?>><a href="<?php echo site_url('mytea') ?>">Mes thés</a></li>
+              <li <?php if ($categorie == 'history') echo 'class="active"'; ?>><a href="<?php echo site_url('history') ?>">Suivi</a></li>
+              <li <?php if ($categorie == 'stats') echo 'class="active"'; ?>><a href="<?php echo site_url('stats') ?>">Stats</a></li>
           </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><?php echo $this->config->item('version')?><li>
-            </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <?php if ($this->ion_auth->is_admin()): ?>
+              <li <?php if ($categorie == 'auth') echo 'class="active"';?>><a href="<?php echo site_url('auth') ?>">Administration <i class='fa fa-gear'></i></a></li>
+              <?php endif; ?>
+              <li><?php if ($this->ion_auth->logged_in()): ?>
+                  <a href="<?php echo site_url('auth/logout') ?>">Se déconnecter <i class='fa fa-sign-out'></i></a>
+                  <?php else : ?>
+                  <a href="<?php echo site_url('auth/login') ?>">Se connecter <i class='fa fa-sign-in'></i></a>
+                  <?php endif; ?>
+              </li>
+              <li><?php echo $this->config->item('version')?></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
