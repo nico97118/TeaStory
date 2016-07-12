@@ -77,14 +77,17 @@ $teas = $this->db->get('tea_store')->result();
                                 <td>
                                     <?php echo htmlspecialchars($tea->seller, ENT_QUOTES, 'UTF-8'); ?>
                                 </td>
-                                <td>
+                                <td><?php if($this->ion_auth->is_admin()): ?>
                                     <a class="btn btn-default" href="<?php echo site_url("mytea/edit/$tea->id") ?>"><i class="fa fa-pencil"></i></a>  
                                     <a class="btn btn-default" href="<?php echo site_url("mytea/delete/$tea->id") ?>"><i class="fa fa-trash"></i></a>
+                                    <?php  endif;?>
                                 </td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
                 <p>
-                    <?php echo anchor(site_url('mytea/add'), 'Ajouter un thé', array('class' => 'btn btn-success')); ?>
+                    <?php if($this->ion_auth->is_admin()):
+                        echo anchor(site_url('mytea/add'), 'Ajouter un thé', array('class' => 'btn btn-success'));
+                    endif;?>
                 </p>

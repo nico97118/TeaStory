@@ -27,11 +27,16 @@ class History extends CI_Controller {
             
             
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('history/add');
+                if($this->ion_auth->logged_in())
+                    $this->load->view('history/add');
                 $this->load->view('history/index');
             } else {
+                if(!$this->ion_auth->logged_in())
+                    return show_error('Vous n\'êtes pas membre');
+                
                  $teaData = array(
                    'fk_tea_id'      =>  $this->input->post('tea'),
+                   'fk_user_id'     =>  $this->ion_auth->user()->row()->id, 
                    'temperature'    =>  $this->input->post('temperature'),
                    'dosage'         =>  $this->input->post('dosage'),
                    'unit'         =>  $this->input->post('unit'),
@@ -49,36 +54,10 @@ class History extends CI_Controller {
                 redirect(site_url('history'),'refresh');
             }
         }
-        /*
-        public function edit($id){
-            $this->load->library('form_validation');
-            
-            $this->form_validation->set_rules('name', 'Nom', 'required');
-            $this->form_validation->set_rules('type', 'Type', 'required');
-            $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer');
-            $this->form_validation->set_rules('sleeping', 'Durée', 'required|decimal');
-            $this->form_validation->set_rules('seller', 'Vendeur', '');
-            
-            if ($this->form_validation->run() == FALSE) {
-                $data['id'] = $id;
-                $this->load->view('mytea/edit',$data);
-            } else {
-                 $teaData = array(
-                   'name'           =>  $this->input->post('name'),
-                   'type'           =>  $this->input->post('type'),
-                   'temperature'    =>  $this->input->post('temperature'),
-                   'sleeping'       =>  $this->input->post('sleeping'),
-                   'seller'         =>  $this->input->post('seller'),
-                    );
-                 
-                $this->mytea_model->edit($id,$teaData);
-                $this->session->set_flashdata('success', $teaData['name']." édité avec succès.");
-                redirect(site_url('mytea'),'refresh');
-            }
-            
-        }*/
         
         public function delete($id){
+            if(!$this->ion_auth->is_admin())
+                    return show_error('Vous n\'êtes pas administrateur.');
             
             $this->history_model->delete($id);
             

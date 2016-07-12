@@ -465,8 +465,6 @@ class Auth extends CI_Controller {
         {
             $this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique[' . $tables['users'] . '.email]');
         }
-        $this->form_validation->set_rules('end', $this->lang->line('create_user_validation_end_label'), 'trim|callback_check_date|callback_date_greater_equel_to['.$this->input->post('start').']');
-        $this->form_validation->set_rules('start', $this->lang->line('create_user_validation_start_label'), 'trim|callback_check_date');
         $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
         $this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -493,9 +491,6 @@ class Auth extends CI_Controller {
         {
             // check to see if we are creating the user
             // redirect them back to the admin page
-            
-            
-            $this->logger->logAction("Création d'un user ","user",$additional_data);
             
            $this->session->set_flashdata('success',' Utilisateur '.$additional_data['first_name'].' '.$additional_data['last_name'].' créé avec succès');
             redirect("auth", 'refresh');
@@ -578,9 +573,7 @@ class Auth extends CI_Controller {
                 $this->form_validation->set_rules('username',"Nom d'utilisateur", 'required');
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required');
-		$this->form_validation->set_rules('start', $this->lang->line('create_user_start_label'), 'required|callback_check_date');
-		$this->form_validation->set_rules('end', $this->lang->line('create_user_end_label'), 'required|callback_check_date|callback_date_greater_equel_to['.$this->input->post('start').']');
-
+		
 		if (isset($_POST) && !empty($_POST))
 		{
 			// do we have a valid request?
@@ -620,23 +613,11 @@ class Auth extends CI_Controller {
 					//Update the groups user belongs to
 					$groupData = $this->input->post('groups');
 
-					if (isset($groupData) && !empty($groupData)) {
-                                            
-                                            $this->load->model('Employee_model');
-                                            $is_in_run = ($this->Employee_model->get_employee($id)?true:false);
-                                            if(!$is_in_run && in_array(2,$groupData)){
-                                                $this->logger->logAction("Ajout d'un utilisateur dans le run ","employee",array('email'=>$user->email,'lastname'=>$user->last_name,'name'=>$user->first_name));
-                                            }
-                                            else if($is_in_run && !in_array(2,$groupData)){
-                                                $this->logger->logAction("Supression d'un utilisateur du run ","employee",array('email'=>$user->email,'lastname'=>$user->last_name,'name'=>$user->first_name));
-                                            }
-                                                    
+					if (isset($groupData) && !empty($groupData)) {      
                                             $this->ion_auth->remove_from_group('', $id);
-
                                             foreach ($groupData as $grp) {
 						$this->ion_auth->add_to_group($grp, $id);
                                             }
-
 					}
 				}
 
@@ -647,8 +628,6 @@ class Auth extends CI_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->messages() );
 				    if ($this->ion_auth->is_admin())
 					{
-                                            $this->logger->logAction("Edition d'un user ","user",$data);
-
                                             $this->session->set_flashdata('success','Utilisateur '.$user->email. ' édité avec succès');
                                             redirect('auth', 'refresh');
                                             return;

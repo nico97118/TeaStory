@@ -56,7 +56,9 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
                                     <input value="<?php echo $element->rate ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
                                 </td>
                                 <td>
+                                    <?php if($this->ion_auth->is_admin()): ?>
                                     <a class="btn btn-default" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
+                                     <?php endif;?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

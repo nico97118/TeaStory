@@ -42,7 +42,7 @@ $send = array(
 ?>
 
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         $('#sleeping').datetimepicker({
             format: 'HH:mm:ss'
         });
@@ -83,4 +83,7 @@ $send = array(
             <?php echo form_fieldset_close(); ?>
             <?php echo form_button($send); ?>
             <?php echo anchor(site_url('mytea'), 'Annuler', array('class' => 'btn btn-danger')); ?>
-            <?php echo form_close("</div></div>"); ?>
+            <?php echo form_close(""); ?>
+        </div>
+    </div>
+</div>
