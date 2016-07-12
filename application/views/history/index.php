@@ -11,6 +11,9 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
         $('#history').DataTable(  
         );
     });
+    function confirmDelete() {
+        return confirm('Etes vous sur de vouloir supprimer cette entrée');
+    }
 </script>
 
 <div class="container">
@@ -57,7 +60,7 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
                                 </td>
                                 <td>
                                     <?php if($this->ion_auth->is_admin()): ?>
-                                    <a class="btn btn-default" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
+                                    <a id="delete" class="btn btn-default" onclick="return confirmDelete();" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
                                      <?php endif;?>
                                 </td>
                             </tr>

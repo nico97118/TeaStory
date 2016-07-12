@@ -23,6 +23,9 @@ $teas = $this->db->get('tea_store')->result();
         $('#teas').DataTable(
         );
     });
+        function confirmDelete() {
+        return confirm('Etes vous sur de vouloir supprimer cette entrée');
+    }
 </script>
 
 <div class="container">
@@ -79,7 +82,7 @@ $teas = $this->db->get('tea_store')->result();
                                 </td>
                                 <td><?php if($this->ion_auth->is_admin()): ?>
                                     <a class="btn btn-default" href="<?php echo site_url("mytea/edit/$tea->id") ?>"><i class="fa fa-pencil"></i></a>  
-                                    <a class="btn btn-default" href="<?php echo site_url("mytea/delete/$tea->id") ?>"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-default" onclick="return confirmDelete();" href="<?php echo site_url("mytea/delete/$tea->id") ?>"><i class="fa fa-trash"></i></a>
                                     <?php  endif;?>
                                 </td>
                             </tr>
