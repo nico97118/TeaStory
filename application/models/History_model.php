@@ -8,6 +8,7 @@ class History_model extends CI_Model {
     }
     
     function delete($id){
+        $this->db->delete('history_rate',array('history_id'=>$id));
         $this->db->delete('tea_history',array('id'=>$id));
     }
     

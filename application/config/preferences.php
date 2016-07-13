@@ -1,6 +1,6 @@
 <?php
 
-$config['version'] = "v1.5";
+$config['version'] = "v1.6";
 
 $config['types'] = array(
     'vert'   => 'thé vert',
