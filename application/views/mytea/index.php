@@ -15,7 +15,7 @@ switch ($filter):
         break;
 endswitch;
 
-$teas = $this->db->get('tea_store')->result();
+$teas = $this->mytea_model->get();
 ?>
 
 <script type="text/javascript">
@@ -68,8 +68,8 @@ $teas = $this->db->get('tea_store')->result();
                                     <?php echo htmlspecialchars($tea->type, ENT_QUOTES, 'UTF-8'); ?>
                                 </td>
                                 <td>
-                                    <input value="<?php echo $this->mytea_model->avg_rate($tea->id) ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
-                                    <span class="label label-default"><?php echo $this->mytea_model->avg_rate($tea->id) ?></span>
+                                    <input value="<?php echo round($tea->rate_avg,1) ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
+                                    <span class="label label-default"><?php echo round($tea->rate_avg,1) ?></span>
                                 </td>
                                 <td>
                                     <?php echo htmlspecialchars($tea->temperature, ENT_QUOTES, 'UTF-8') . ' °C'; ?>
