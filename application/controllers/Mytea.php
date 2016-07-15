@@ -24,9 +24,9 @@ class Mytea extends CI_Controller {
              $this->load->library('form_validation');
             
             $this->form_validation->set_rules('name', 'Nom', 'required');
-            $this->form_validation->set_rules('type', 'Type', 'required');
-            $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer');
-            $this->form_validation->set_rules('sleeping', 'Durée', 'required');
+            $this->form_validation->set_rules('type', 'Type', 'required|callback_type_check');
+            $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer|less_than[100]|greater_than[0]');
+            $this->form_validation->set_rules('sleeping', 'Durée', 'required|callback_sleeping_check');
             $this->form_validation->set_rules('seller', 'Vendeur', '');
             
             if ($this->form_validation->run() == FALSE) {
@@ -52,9 +52,9 @@ class Mytea extends CI_Controller {
             $this->load->library('form_validation');
             
             $this->form_validation->set_rules('name', 'Nom', 'required');
-            $this->form_validation->set_rules('type', 'Type', 'required');
-            $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer');
-            $this->form_validation->set_rules('sleeping', 'Durée', 'required');
+            $this->form_validation->set_rules('type', 'Type', 'required|callback_type_check');
+            $this->form_validation->set_rules('temperature', 'Temperature', 'required|integer|less_than[100]|greater_than[0]');
+            $this->form_validation->set_rules('sleeping', 'Durée', 'required|callback_sleeping_check');
             $this->form_validation->set_rules('seller', 'Vendeur', '');
             
             if ($this->form_validation->run() == FALSE) {
@@ -86,6 +86,22 @@ class Mytea extends CI_Controller {
             
             $this->session->set_flashdata('success', $tea->name." supprimé avec succès.");
             redirect(site_url('mytea'),'refresh');
+        }
+        
+        function sleeping_check($str){
+            if( !preg_match("/(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])/", $str)){
+                $this->form_validation->set_message('sleeping_check', ' %s est mal formatée' );
+                return false;
+            } else
+                return true;
+        }
+           
+        function type_check($str){
+            if(!key_exists($str, $this->config->item('types'))){
+                    $this->form_validation->set_message('type_check', 'Ce %s n\'existe pas' );
+                return false;
+            } else
+                return true;
         }
         
 }
