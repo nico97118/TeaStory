@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'planning-ga',
-	'password' => 'gaa',
+	'hostname' => '192.168.1.24',
+	'username' => 'teastory',
+	'password' => 'teastory',
 	'database' => 'teastory',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
