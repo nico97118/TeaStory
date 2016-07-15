@@ -1,9 +1,11 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Stats_model extends CI_Model {
-    function count_history($tea_id)
+    function count_history($tea_id,$user_id=null)
     {
-        $query = $this->db->get_where('tea_history',array('fk_tea_id'=>$tea_id));
+        if(isset($user_id))
+            $this->where('user_id',$user_id);
+        $query = $this->db->get_where('tea_history_view',array('fk_tea_id'=>$tea_id));
         return $query->num_rows();
     }
     

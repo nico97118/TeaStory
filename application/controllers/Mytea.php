@@ -18,6 +18,8 @@ class Mytea extends CI_Controller {
         }
         
         public function add(){
+            if(!$this->ion_auth->is_admin())
+                    return show_error('Vous n\'êtes pas administrateur.');
             
              $this->load->library('form_validation');
             
@@ -45,6 +47,8 @@ class Mytea extends CI_Controller {
         }
         
         public function edit($id){
+            if(!$this->ion_auth->is_admin())
+                    return show_error('Vous n\'êtes pas administrateur.');
             $this->load->library('form_validation');
             
             $this->form_validation->set_rules('name', 'Nom', 'required');
@@ -73,6 +77,8 @@ class Mytea extends CI_Controller {
         }
         
         public function delete($id){
+            if(!$this->ion_auth->is_admin())
+                    return show_error('Vous n\'êtes pas administrateur.');
             $teas = $this->mytea_model->get($id);
             $tea = $teas[0];
             
