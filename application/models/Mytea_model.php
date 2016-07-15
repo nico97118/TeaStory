@@ -20,11 +20,11 @@ class Mytea_model extends CI_Model {
         if(isset($id)){
             $this->db->where('id',$id);
         }
-        return $this->db->get('tea_store')->result();
+        return $this->db->get('tea_store_view')->result();
     }
     
     function get_not_empty(){
-        return $this->db->where('empty',0)->get('tea_store')->result();
+        return $this->db->where('empty',0)->get('tea_store_view')->result();
     }
     
     function count($empty=null){
@@ -35,24 +35,8 @@ class Mytea_model extends CI_Model {
                 $this->db->where('empty',0);
         }
         
-        $count = $this->db->get('tea_store');
+        $count = $this->db->get('tea_store_view');
         return $count->num_rows();
-    }
-    
-    function avg_rate($id)
-    {
-        $elements = $this->db->get_where('tea_history',array('fk_tea_id'=>$id))->result();
-        if(empty($elements))
-            return NULL;
-        
-        $count = 0;
-        $sum = 0;
-        foreach($elements AS $element){
-            $sum += $element->rate;
-            $count ++;
-        }
-        
-        return bcdiv($sum, $count, 1);
     }
     
     function get_type($type=null){

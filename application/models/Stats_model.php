@@ -10,11 +10,11 @@ class Stats_model extends CI_Model {
     }
     
     function best_rated($number){
-        return $this->db->order_by('rate_avg','desc')->get('tea_store_view',$number,0)->result();
+        return $this->db->where('rate>',0)->order_by('rate_avg','desc')->get('tea_store_view',$number,0)->result();
     }
     
     function top($field,$number){
-        return $this->db->order_by($field,'desc')->get('tea_store_view',$number,0)->result();
+        return $this->db->where($field.'!=',null)->order_by($field,'desc')->get('tea_store_view',$number,0)->result();
     }
     
     function tea_recap($tea_id,$days_ago){

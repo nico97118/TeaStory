@@ -10,9 +10,28 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
     $(document).ready(function () {
         $('#history').DataTable(  
         );
+    $("#rating").rating();
     });
     function confirmDelete() {
         return confirm('Etes vous sur de vouloir supprimer cette entrée');
+    }
+    
+    function rate(history_id,e){
+        var val = e.value;
+        $.ajax({
+         type: "POST",
+         url: "<?php echo site_url('history/rate') ?>", 
+         data: {
+             'history_id':history_id,
+             'user_id':<?php echo $this->ion_auth->user()->row()->id; ?>,
+             'rate':val
+                },
+         dataType: "JSON",  
+         cache:false,
+         success: 
+            function(){alert('OK');}
+        });
+        return;
     }
 </script>
 
@@ -56,11 +75,14 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
                                     <?php echo htmlspecialchars($element->comment, ENT_QUOTES, 'UTF-8'); ?>
                                 </td>
                                 <td>
-                                    <input value="<?php echo $element->rate ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
+                                    <input id="rate" value="<?php echo round($element->rate,1) ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
                                 </td>
                                 <td>
+                                    <?php if($this->ion_auth->logged_in()): ?>
+                                    <strong>Noter :</strong>  <input name="rating" value="<?php echo $this->history_model->get_user_vote($this->ion_auth->user()->row()->id,$element->id); ?>" onchange="rate(<?php echo $element->id ?>,this);" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty"/>
+                                    <?php endif; ?>
                                     <?php if($this->ion_auth->is_admin()): ?>
-                                    <a id="delete" class="btn btn-default" onclick="return confirmDelete();" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
+                                    <a id="delete" class="btn btn-default pull-right" onclick="return confirmDelete();" href="<?php echo site_url("history/delete/$element->id") ?>"><i class="fa fa-trash"></i></a>
                                      <?php endif;?>
                                 </td>
                             </tr>
