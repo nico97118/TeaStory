@@ -8,10 +8,18 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#history').DataTable(  
+        
+        $.fn.dataTable.moment('D/M H:m');
+        
+        $('#history').DataTable({
+            "order": [[ 0, "desc" ]]
+        }  
         );
-    $("#rating").rating();
+        
+
+        $("#rating").rating();
     });
+    
     function confirmDelete() {
         return confirm('Etes vous sur de vouloir supprimer cette entrée');
     }
@@ -23,7 +31,7 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
          url: "<?php echo site_url('history/rate') ?>", 
          data: {
              'history_id':history_id,
-             'user_id':<?php echo $this->ion_auth->user()->row()->id; ?>,
+             'user_id':<?php echo ($this->ion_auth->logged_in() ? $this->ion_auth->user()->row()->id : 'null') ; ?>,
              'rate':val
                 },
          dataType: "JSON",  
@@ -75,7 +83,11 @@ $elements = $this->db->order_by('date', 'desc')->get('tea_history_view')->result
                                     <?php echo htmlspecialchars($element->comment, ENT_QUOTES, 'UTF-8'); ?>
                                 </td>
                                 <td>
-                                    <input id="rate" value="<?php echo round($element->rate,1) ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
+                                    <?php if($element->rate > 0 ): ?>
+                                    <span class="badge"><?php echo round($element->rate, 2) ?> <i class="fa fa-leaf"></i></span>
+                                    <?php else : ?>
+                                    <span class="badge">- <i class="fa fa-leaf"></i></span>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
                                     <?php if($this->ion_auth->logged_in()): ?>
