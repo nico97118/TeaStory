@@ -46,7 +46,7 @@ $send = array(
     'name' => 'button',
     'type' => 'submit',
     'class' => 'btn btn-success',
-    'content' => 'Ajouter'
+    'content' => "Editer"
 );
 ?>
 

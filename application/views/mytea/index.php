@@ -16,6 +16,8 @@ switch ($filter):
 endswitch;
 
 $teas = $this->mytea_model->get();
+$types = $this->config->item('types');
+$color_types = $this->config->item('types_color');
 ?>
 
 <script type="text/javascript">
@@ -65,17 +67,20 @@ $teas = $this->mytea_model->get();
                                     <?php echo htmlspecialchars($tea->name, ENT_QUOTES, 'UTF-8'); ?>
                                 </td>
                                 <td>
-                                    <?php echo htmlspecialchars($tea->type, ENT_QUOTES, 'UTF-8'); ?>
+                                    <?php echo $tea->type; ?> <?php if($color_types[$tea->type] != null) : ?> <i class="fa fa-leaf"  style="color:#<?php echo $color_types[$tea->type];?>"></i><?php endif; ?>
                                 </td>
                                 <td>
-                                    <input value="<?php echo round($tea->rate_avg,1) ?>" type="hidden" class="rating" data-filled="fa fa-leaf" data-empty="fa fa-leaf symbol-empty" readonly/>
-                                    <span class="label label-default"><?php echo round($tea->rate_avg,1) ?></span>
+                                    <?php if($tea->rate_avg > 0 ): ?>
+                                    <span class="badge"><?php echo round($tea->rate_avg, 2) ?> <i class="fa fa-leaf"></i></span>
+                                    <?php else : ?>
+                                    <span class="badge">- <i class="fa fa-leaf"></i></span>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?php echo htmlspecialchars($tea->temperature, ENT_QUOTES, 'UTF-8') . ' °C'; ?>
+                                    <?php echo $tea->temperature . ' °C'; ?>
                                 </td>
                                 <td>
-                                    <?php echo htmlspecialchars($tea->sleeping, ENT_QUOTES, 'UTF-8'); ?>
+                                    <?php echo $tea->sleeping; ?>
                                 </td>
                                 <td>
                                     <?php echo htmlspecialchars($tea->seller, ENT_QUOTES, 'UTF-8'); ?>

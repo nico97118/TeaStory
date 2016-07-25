@@ -12,13 +12,6 @@ Release Information
 This repo contains in-development code for future releases.
 To get the latest stable version. Browse for higher vX.Y tag.
 
-**************************
-Changelog and New Features
-**************************
-
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
-
 *******************
 Server Requirements
 *******************
@@ -32,10 +25,10 @@ issues, as well as missing features.
 ************
 Installation
 ************
--  `1. Set up this repo on a webserver.`_
--  `2. You'll need to change the /application/config/config.php to update 'base_url' item.`_
--  `3. You'll need to change the /application/config/database.php to update your database setting.`_
--  `4. To help you set up the database. Use /install.sql script on your MySQL server to construct the database.`_
+-  1. Set up this repo on a webserver.
+-  2. You'll need to change the /application/config/config.php to update 'base_url' item.
+-  3. You'll need to change the /application/config/database.php to update your database setting.
+-  4. To help you set up the database. Use /install.sql script on your MySQL server to construct the database.
 
 Everything should working fine now
 
@@ -56,4 +49,4 @@ Resources
 -  `Highcharts <http://www.highcharts.com>`_
 
 Author  : Nicolas Loridon
-Contact : `nico97118@gmail.com<mailto:security@codeigniter.com>`_
+Contact : `nico97118@gmail.com <mailto:nico97118@gmail.com>`_

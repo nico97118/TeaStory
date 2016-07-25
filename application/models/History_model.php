@@ -17,7 +17,7 @@ class History_model extends CI_Model {
         if(isset($id)){
             $this->db->where('id',$id);
         }
-        return $this->db->get('tea_store_view')->result();
+        return $this->db->get('tea_history_view')->result();
     }
     
     function set_empty($tea_id,$empty=true)
